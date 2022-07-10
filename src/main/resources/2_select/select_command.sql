@@ -1,0 +1,3 @@
+select FIRST_NAME,LAST_NAME,SALARY from EMPLOYEES;
+
+select distinct JOB_ID from JOB_HISTORY;
