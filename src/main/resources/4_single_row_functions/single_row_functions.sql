@@ -29,3 +29,24 @@ select rpad('Anna', 7, '#') from DUAL;
 select trim(trailing 'q' from 'qqqqannaqqqqqqq') from DUAL;
 select trim(leading 'q' from 'qqqqannaqqqqqqq') from DUAL;
 select trim(both 'q' from 'qqqqannaqqqqqqq') from DUAL;
+
+-- INSTR
+select * from EMPLOYEES where instr(JOB_ID, 'PROG') = 4;
+
+-- SUBSTR
+select EMAIL, substr(EMAIL, 4, 2) from EMPLOYEES;
+select substr('hello, how are you?', 7 ,5) from DUAL;
+
+-- REPLACE
+select replace('hello, how are you?', 'how' ,'&&&&') from DUAL;
+select replace('hello, how are you?', 'how') from DUAL;
+
+-- ROUND
+select round(132.32342, 1) from DUAL;
+select round(132.32) from DUAL;
+select round(132232, -2) from DUAL;
+
+-- TRUNC
+select trunc(132.32582, 1) from DUAL;
+select trunc(132.72) from DUAL;
+select trunc(13277, -1) from DUAL;
