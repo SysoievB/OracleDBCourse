@@ -60,3 +60,7 @@ select * from NLS_SESSION_PARAMETERS where PARAMETER = 'NLS_DATE_FORMAT';
 
 -- SYSDATE
 select sysdate from DUAL;
+select sysdate - HIRE_DATE from EMPLOYEES;
+
+-- MONTHS_BETWEEN
+select EMPLOYEE_ID, months_between(END_DATE, START_DATE) from JOB_HISTORY;
