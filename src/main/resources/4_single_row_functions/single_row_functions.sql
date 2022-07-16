@@ -50,3 +50,13 @@ select round(132232, -2) from DUAL;
 select trunc(132.32582, 1) from DUAL;
 select trunc(132.72) from DUAL;
 select trunc(13277, -1) from DUAL;
+
+-- MOD
+select mod(132.32582, 1) from DUAL;
+select mod(13277, 2) from DUAL;
+
+-- DATE
+select * from NLS_SESSION_PARAMETERS where PARAMETER = 'NLS_DATE_FORMAT';
+
+-- SYSDATE
+select sysdate from DUAL;
