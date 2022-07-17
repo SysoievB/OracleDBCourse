@@ -43,4 +43,43 @@ STEVEN sking Ad_Pres
 select * from EMPLOYEES where length(FIRST_NAME) > 10;
 
 -- 2
-select * from EMPLOYEES where salary = mod(salary, 1000);
+select * from EMPLOYEES where mod(salary, 1000) = 0;
+
+-- 3
+select PHONE_NUMBER, substr(PHONE_NUMBER, 1, 3) from EMPLOYEES where PHONE_NUMBER like '___.___.____';
+
+-- 4
+select * from EMPLOYEES where FIRST_NAME like '%m' and length(FIRST_NAME) > 5;
+
+-- 5
+select next_day(sysdate, 'Пятница') as "Next Friday" from dual;
+
+-- 6
+select *  from EMPLOYEES where months_between(SYSDATE, HIRE_DATE) > 150;
+
+-- 7
+select replace(PHONE_NUMBER, '.', '-') from EMPLOYEES;
+
+-- 8
+select upper(FIRST_NAME), lower(EMAIL), initcap(JOB_ID) from EMPLOYEES;
+
+-- 9
+select concat(FIRST_NAME, SALARY) from EMPLOYEES;
+
+-- 10
+select HIRE_DATE, round(HIRE_DATE, 'MM'), trunc(HIRE_DATE, 'YYYY') from EMPLOYEES;
+
+-- 11
+select rpad(FIRST_NAME, 10, '$'), lpad(LAST_NAME, 15, '!') from EMPLOYEES;
+
+-- 12
+select FIRST_NAME, instr(FIRST_NAME, 'a', 1, 2) from EMPLOYEES;
+
+-- 13
+select '!!!HELLO!! MY FRIEND!!!!!!!!', trim(both '!' from '!!!HELLO!! MY FRIEND!!!!!!!!') from DUAL;
+
+-- 14
+select SALARY, SALARY*3.1415, round(SALARY*3.1415), round(SALARY*3.1415, -3)/1000 from EMPLOYEES;
+
+-- 15
+select HIRE_DATE, add_months(HIRE_DATE, 6), last_day(HIRE_DATE) from EMPLOYEES;
