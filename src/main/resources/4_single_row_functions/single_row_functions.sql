@@ -64,3 +64,19 @@ select sysdate - HIRE_DATE from EMPLOYEES;
 
 -- MONTHS_BETWEEN
 select EMPLOYEE_ID, months_between(END_DATE, START_DATE) from JOB_HISTORY;
+
+-- ADD_MONTHS
+select add_months(sysdate, 4) from DUAL;
+
+-- NEXT_DAY
+select next_day(sysdate, 1) from DUAL;
+select next_day(sysdate, 'Вторник') from DUAL;
+
+-- LAST_DAY
+select last_day(sysdate) from DUAL;
+
+-- ROUND(FOR DATE)
+select round(sysdate, 'YYYY') from DUAL;
+
+-- TRUNC(FOR DATE)
+select trunc(sysdate, 'YYYY') from DUAL;
