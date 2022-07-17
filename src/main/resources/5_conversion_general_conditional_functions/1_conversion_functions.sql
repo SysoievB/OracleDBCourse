@@ -39,3 +39,11 @@ select to_char(sysdate, 'ss') from DUAL;
 select to_char(sysdate, 'sssss') from DUAL;
 select to_char(sysdate, 'DDTH') from DUAL;
 select to_char(sysdate, 'YYYYSP') from DUAL;
+
+-- TO_DATE
+select to_date(120322) from DUAL;
+select to_date('18-Мар-2023', 'DD-mon-YYYY') from DUAL;
+
+-- TO_NUMBER
+select to_number('342') from DUAL;
+
