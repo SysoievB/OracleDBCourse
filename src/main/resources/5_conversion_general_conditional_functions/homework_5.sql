@@ -54,3 +54,34 @@ Europe, 2-America, 3-Asia, 4-Africa . Выполнить данное задан
 комиссионные;
  GOOD: з/п больше или равна 15000.
 */
+
+-- 1
+select *  from EMPLOYEES where instr(lower(FIRST_NAME), 'b') > 0;
+
+-- 2
+select * from EMPLOYEES where FIRST_NAME like '%a%a%';
+
+-- 3
+select * from DEPARTMENTS where DEPARTMENT_NAME like '% %';
+
+-- 4
+select FIRST_NAME, substr(FIRST_NAME, 2, length(FIRST_NAME) - 2) from EMPLOYEES;
+
+-- 5
+select * from EMPLOYEES where substr(JOB_ID, instr(JOB_ID, '_') + 1) != 'CLERK' and JOB_ID like '%\____%' escape '\';
+
+-- 6
+select * from EMPLOYEES where to_char(HIRE_DATE, 'DD') = '01';
+
+-- 7
+select * from EMPLOYEES where to_char(HIRE_DATE, 'YYYY') = '2008';
+
+-- 8
+select to_char(sysdate + 1, 'fm"Tomorrow is "Ddspth "day of" Month') info from DUAL;
+
+-- 9
+select FIRST_NAME, to_char(HIRE_DATE, 'fmddth "of" Month, YYYY') from EMPLOYEES;
+
+-- 10
+select FIRST_NAME, to_char(SALARY + SALARY * 0.2, '$999,999.00') new_salary from EMPLOYEES;
+
