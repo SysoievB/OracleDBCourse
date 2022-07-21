@@ -85,3 +85,65 @@ select FIRST_NAME, to_char(HIRE_DATE, 'fmddth "of" Month, YYYY') from EMPLOYEES;
 -- 10
 select FIRST_NAME, to_char(SALARY + SALARY * 0.2, '$999,999.00') new_salary from EMPLOYEES;
 
+-- 11
+select SYSDATE now,
+       sysdate + (1/24/60/60) plus_second,
+       sysdate + (1/24/60) plus_minute,
+       sysdate + (1/24) plus_hour,
+       sysdate + 1 plus_day,
+       sysdate + 1 * 30 plus_month,
+       sysdate + 1 * 365 plus_year
+from DUAL;
+
+-- 12
+select FIRST_NAME, SALARY, SALARY + to_number('$12,345.55','$999,999.99') new_salary from EMPLOYEES;
+
+-- 13
+select FIRST_NAME, HIRE_DATE, months_between(to_date('СЕН, 18:45:00 18 2009', 'MON, HH24:MI:SS DD YYYY'), HIRE_DATE) from EMPLOYEES;
+
+-- 14
+select FIRST_NAME, SALARY, to_char(SALARY + SALARY * NVL(COMMISSION_PCT, 0), '$999,999.99') from EMPLOYEES;
+
+-- 15
+select FIRST_NAME, LAST_NAME,nvl2(nullif(length(FIRST_NAME), length(LAST_NAME)),'different length', 'same length') from EMPLOYEES;
+
+-- 16
+select FIRST_NAME, COMMISSION_PCT, nvl2(COMMISSION_PCT, 'Yes', 'No') from EMPLOYEES;
+
+-- 17
+select FIRST_NAME, coalesce(COMMISSION_PCT, MANAGER_ID, SALARY) from EMPLOYEES;
+
+-- 18
+select FIRST_NAME, SALARY,
+       case
+           when SALARY < 5000 then 'Low level'
+           when SALARY >= 5000 and SALARY < 10000 then 'Normal level'
+           when SALARY >= 10000 then 'High level'
+       end salary_case
+from EMPLOYEES;
+
+-- 19
+select COUNTRY_NAME, decode(REGION_ID,
+    1, '1-Europe',
+    2, '2-America',
+    3, '3-Asia',
+    4, '4-Africa') regions from COUNTRIES;
+
+-- 20
+select COUNTRY_NAME,
+       case
+           when REGION_ID = 1 then '1-Europe'
+           when REGION_ID = 2 then '2-America'
+           when REGION_ID = 3 then '3-Asia'
+           when REGION_ID = 4 then '4-Africa'
+           end regions
+from COUNTRIES;
+
+-- 21
+select FIRST_NAME, SALARY,
+       case
+           when SALARY < 10000 and COMMISSION_PCT is null then 'BAD'
+           when SALARY between 10000 and 15000 or COMMISSION_PCT is not null then 'NORMAL'
+           when SALARY > 15000 then 'GOOD'
+       end
+conditions from EMPLOYEES;
