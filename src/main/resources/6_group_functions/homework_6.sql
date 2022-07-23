@@ -30,3 +30,74 @@
 среди всех средних зарплат по департаментам
 */
 
+-- 1
+select DEPARTMENT_ID,
+       min(SALARY),
+       max(SALARY),
+       min(HIRE_DATE),
+       max(HIRE_DATE),
+       count(*)
+from EMPLOYEES group by DEPARTMENT_ID
+order by count(*) desc;
+
+-- 2
+select substr(FIRST_NAME, 1, 1),
+       count(*)
+from EMPLOYEES
+group by substr(FIRST_NAME, 1, 1)
+having count(*) > 1
+order by 2;
+
+-- 3
+select DEPARTMENT_ID, SALARY,
+       count(*)
+from EMPLOYEES
+group by DEPARTMENT_ID, SALARY;
+
+-- 4
+select to_char(HIRE_DATE, 'Day'),
+       count(*)
+from EMPLOYEES
+group by to_char(HIRE_DATE, 'Day');
+
+-- 5
+select DEPARTMENT_ID
+from EMPLOYEES
+group by DEPARTMENT_ID
+having count(*) > 30 and sum(SALARY) > 300000;
+
+-- 6
+select REGION_ID
+from COUNTRIES
+group by REGION_ID
+having sum(length(COUNTRY_NAME)) > 50;
+
+-- 7
+select JOB_ID, round(avg(SALARY)) from EMPLOYEES group by JOB_ID;
+
+-- 8
+select DEPARTMENT_ID
+from EMPLOYEES
+group by DEPARTMENT_ID
+having count(distinct JOB_ID) > 1;
+
+-- 9
+select DEPARTMENT_ID,
+       JOB_ID,
+       max(SALARY),
+       min(SALARY)
+from EMPLOYEES
+group by DEPARTMENT_ID, JOB_ID
+having avg(SALARY) > 10000;
+
+-- 10
+select MANAGER_ID
+from EMPLOYEES
+where COMMISSION_PCT is null
+group by MANAGER_ID
+having avg(SALARY) between 6000 and 9000;
+
+-- 11
+select round(max(SALARY), -3)
+from EMPLOYEES
+group by DEPARTMENT_ID;
