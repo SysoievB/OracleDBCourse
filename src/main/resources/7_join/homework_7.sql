@@ -29,3 +29,26 @@ natural join.
 11.Решите задачу № 1, используя Oracle Join синтаксис.
 12.Решите задачу № 5, используя Oracle Join синтаксис.
 */
+
+-- 1
+select * from REGIONS natural join EMPLOYEES;
+
+-- 2
+select FIRST_NAME, LAST_NAME, DEPARTMENT_NAME, JOB_ID, STREET_ADDRESS, COUNTRY_NAME, r.REGION_NAME
+from EMPLOYEES
+    join DEPARTMENTS D on D.DEPARTMENT_ID = EMPLOYEES.DEPARTMENT_ID
+    join LOCATIONS L2 on L2.LOCATION_ID = D.LOCATION_ID
+    join COUNTRIES C2 on C2.COUNTRY_ID = L2.COUNTRY_ID
+    join REGIONS r on C2.REGION_ID = r.REGION_ID;
+
+-- 3
+select man.FIRST_NAME, count(*)
+from EMPLOYEES emp
+join EMPLOYEES man on (emp.MANAGER_ID = man.EMPLOYEE_ID)
+group by man.FIRST_NAME
+having count(*) > 6;
+
+-- 4
+select DEPARTMENT_NAME, count(*)
+from EMPLOYEES join DEPARTMENTS using (DEPARTMENT_ID)
+group by DEPARTMENT_NAME having count(*) > 30;
